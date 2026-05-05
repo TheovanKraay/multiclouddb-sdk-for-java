@@ -4,12 +4,39 @@
 package com.multiclouddb.conformance;
 
 import com.fasterxml.jackson.databind.JsonNode;
-import com.multiclouddb.api.*;
-import org.junit.jupiter.api.*;
+import com.multiclouddb.api.CapabilitySet;
+import com.multiclouddb.api.DocumentResult;
+import com.multiclouddb.api.MulticloudDbClient;
+import com.multiclouddb.api.MulticloudDbErrorCategory;
+import com.multiclouddb.api.MulticloudDbException;
+import com.multiclouddb.api.MulticloudDbKey;
+import com.multiclouddb.api.QueryPage;
+import com.multiclouddb.api.QueryRequest;
+import com.multiclouddb.api.ResourceAddress;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.MethodOrderer;
+import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
 
-import java.util.*;
+import java.util.HashSet;
+import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.UUID;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.fail;
 
 /**
  * Provider-agnostic conformance tests exercising the portable CRUD + query

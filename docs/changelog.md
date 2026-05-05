@@ -22,12 +22,6 @@ and all modules adhere to [Semantic Versioning](https://semver.org/spec/v2.0.0.h
   when the key does not exist (non-mutating). `update()` also throws
   `NOT_FOUND` on a missing key, but it requires a document body and
   **overwrites on hit**, so it is not a safe pure existence probe.
-- *Audit trail*: an earlier draft of this PR introduced a strict
-  `NOT_FOUND`-on-delete contract. After review, that contract was
-  abandoned in favour of the LCD interpretation documented above; the
-  strict-delete code was reverted in this same PR before merge. This clarifies (rather
-  than changes) the wire-level behaviour the providers were already
-  exhibiting; no caller-visible behaviour change.
 
 ### [0.1.0-beta.1] - 2026-04-23
 
@@ -70,8 +64,7 @@ and all modules adhere to [Semantic Versioning](https://semver.org/spec/v2.0.0.h
 
 - `consistencyLevel` connection config key for opt-in client-level read
   consistency override (applied uniformly to every read from a given client
-  instance; per-operation overrides via `OperationOptions` are deferred to a
-  future release per spec edge-case resolution). Valid values
+  instance). Valid values
   (case-insensitive): `STRONG`, `BOUNDED_STALENESS`, `SESSION`,
   `CONSISTENT_PREFIX`, `EVENTUAL`. When absent, read requests inherit the
   Cosmos DB account's configured default. See `docs/configuration.md` —

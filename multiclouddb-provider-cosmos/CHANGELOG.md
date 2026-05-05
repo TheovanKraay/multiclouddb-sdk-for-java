@@ -17,19 +17,11 @@ and this module adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.
   `MulticloudDbClient.delete(...)` and in `docs/guide.md`. No caller-visible
   behaviour change. Callers needing to detect a missing key should use `read()`, which
   returns `null` on every provider when the key does not exist.
-- *Audit trail*: an earlier draft of this PR introduced a strict
-  NOT_FOUND-on-delete contract (Cosmos retained the 404 throw; DynamoDB
-  added an `attribute_exists` guard; Spanner used a DML `DELETE` with a
-  rows-affected check). After review, that contract was abandoned in
-  favour of the LCD interpretation documented above; the strict-delete
-  code was reverted in this same PR before merge.
 
 ### Added
 
 - `consistencyLevel` connection config key for opt-in client-level read consistency
-  override (applied uniformly to every read from a given client instance; per-operation
-  overrides via `OperationOptions` are deferred to a future release per spec edge-case
-  resolution). Valid values (case-insensitive): `STRONG`, `BOUNDED_STALENESS`, `SESSION`,
+  override (applied uniformly to every read from a given client instance). Valid values (case-insensitive): `STRONG`, `BOUNDED_STALENESS`, `SESSION`,
   `CONSISTENT_PREFIX`, `EVENTUAL`. When absent, read requests inherit the Cosmos DB
   account's configured default. See `docs/configuration.md` — *Consistency Level*.
 

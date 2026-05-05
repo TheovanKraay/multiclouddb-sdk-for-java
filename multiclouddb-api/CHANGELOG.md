@@ -18,14 +18,6 @@ and this module adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.
   when the key does not exist (non-mutating). `update()` also throws
   `NOT_FOUND` on a missing key, but it requires a document body and
   **overwrites on hit**, so it is not a safe pure existence probe.
-- *Audit trail*: an earlier draft of this PR introduced a strict
-  NOT_FOUND-on-delete contract (Cosmos retained the 404 throw; DynamoDB
-  added an `attribute_exists` guard; Spanner used a DML `DELETE` with a
-  rows-affected check). After review, that contract was abandoned in
-  favour of the LCD interpretation documented above; the strict-delete
-  code was reverted in this same PR before merge. This clarifies (rather
-  than changes) the wire-level behaviour the providers were already
-  exhibiting; no caller-visible behaviour change.
 
 ## [0.1.0-beta.1] — 2026-04-23
 

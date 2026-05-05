@@ -18,12 +18,6 @@ and this module adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.
   `MulticloudDbClient.delete(...)` and in `docs/guide.md`. Callers needing to detect a
   missing key should use `read()`, which returns `null` on every provider
   when the key does not exist.
-- *Audit trail*: an earlier draft of this PR introduced a strict
-  NOT_FOUND-on-delete contract (Cosmos retained the 404 throw; DynamoDB
-  added an `attribute_exists` guard; Spanner used a DML `DELETE` with a
-  rows-affected check). After review, that contract was abandoned in
-  favour of the LCD interpretation documented above; the strict-delete
-  code was reverted in this same PR before merge.
 
 ### Changed
 

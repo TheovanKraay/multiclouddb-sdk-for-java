@@ -85,7 +85,9 @@ public abstract class CrudConformanceTests {
     /**
      * Cleanup helper that delegates to {@link com.multiclouddb.api.MulticloudDbClient#delete}.
      * Delete is idempotent across providers, so calling this on an already-deleted
-     * (or never-created) key is a silent no-op and never blocks teardown.
+     * (or never-created) key is a silent no-op. Real provider errors (auth,
+     * network, invalid request) still propagate and may fail teardown — by design,
+     * since masking those would hide environment-level problems.
      */
     private void safeDelete(MulticloudDbKey key) {
         client.delete(getAddress(), key);
@@ -376,10 +378,13 @@ public abstract class CrudConformanceTests {
     @Test @Order(16)
     @DisplayName("query with no matches returns empty page (not null, not exception)")
     void queryWithNoMatchesReturnsEmptyPage() {
+        // Per-run unique sentinel — guarantees no document in long-lived emulator
+        // state or shared test environments accidentally satisfies the predicate.
+        String unmatchableTitle = "no-document-has-this-title-" + java.util.UUID.randomUUID();
         QueryPage page = client.query(getAddress(),
                 QueryRequest.builder()
                         .expression("title = @t")
-                        .parameter("t", "no-document-has-this-title-xyz-12345")
+                        .parameter("t", unmatchableTitle)
                         .maxPageSize(50)
                         .build());
         assertNotNull(page, "Query must return a non-null page even when no items match");

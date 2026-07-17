@@ -1,0 +1,32 @@
+{
+  "sessions": [
+    {
+      "cosmos_session_id": "59b55a4f-f513-49c7-9ef3-e1b8a5474b58",
+      "summary": "[raw] 137349f1-b3ea-4b37-a5d6-b54101",
+      "platform": "claude-code",
+      "exported_at": "2026-07-17T17:12:11.427326+00:00",
+      "updated_at": "2026-07-17T17:12:11.427326+00:00"
+    },
+    {
+      "cosmos_session_id": "10416713-48e3-44d6-9e6c-e63773478251",
+      "summary": "[raw] 99a95ad8-5088-4922-a36a-c46e93",
+      "platform": "copilot",
+      "exported_at": "2026-07-17T17:24:14.800616+00:00",
+      "updated_at": "2026-07-17T17:24:14.800616+00:00"
+    },
+    {
+      "cosmos_session_id": "8811b0f7-c696-4b0d-aa46-d728434cd439",
+      "summary": "",
+      "platform": "copilot",
+      "exported_at": "2026-07-17T17:37:25.148511+00:00",
+      "updated_at": "2026-07-17T17:37:25.148511+00:00"
+    },
+    {
+      "cosmos_session_id": "a4312212-d179-45bb-ae4a-76fbd5bb41ff",
+      "summary": "GitHub Pages for Multicloud DB SDK Documentation",
+      "platform": "copilot",
+      "exported_at": "2026-07-17T18:30:41.400733+00:00",
+      "updated_at": "2026-07-17T18:30:41.400733+00:00"
+    }
+  ]
+}

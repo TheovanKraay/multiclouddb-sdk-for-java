@@ -1,0 +1,26 @@
+﻿{
+    "hooks":  {
+                  "SessionEnd":  [
+                                     {
+                                         "hooks":  [
+                                                       {
+                                                           "command":  "python \"C:\\cosmos\\multiclouddb-sdk\\multiclouddb-sdk-for-java\\.github\\skills\\repo-memory\\scripts\\memory_cli.py\" session-export --platform claude-code",
+                                                           "type":  "command"
+                                                       }
+                                                   ],
+                                         "matcher":  ""
+                                     }
+                                 ],
+                  "Stop":  [
+                               {
+                                   "hooks":  [
+                                                 {
+                                                     "command":  "\"C:\\cosmos\\multiclouddb-sdk\\multiclouddb-sdk-for-java\\.github\\skills\\repo-memory\\.venv\\Scripts\\python.exe\" \"C:\\cosmos\\multiclouddb-sdk\\multiclouddb-sdk-for-java\\.github\\skills\\repo-memory\\scripts\\auto_sync_hook.py\"",
+                                                     "type":  "command"
+                                                 }
+                                             ],
+                                   "matcher":  ""
+                               }
+                           ]
+              }
+}

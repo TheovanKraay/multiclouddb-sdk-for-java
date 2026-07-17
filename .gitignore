@@ -62,3 +62,6 @@ epom.xml
 
 # ── Build staging ──────────────────────────────────────
 staging/
+.github/skills/repo-memory/
+__pycache__/
+.env
